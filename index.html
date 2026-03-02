@@ -3,24 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Seraphyx</title>
+    
+    <meta name="theme-color" content="#ff8c00">
+    <meta name="description" content="Seraphyx: You've never seen an osu! private server like this before.">
+    
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Seraphyx">
+    <meta property="og:description" content="You've never seen an osu! private server like this before.">
+    <meta property="og:site_name" content="Seraphyx">
+    
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%23ff8c00;stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:%23ff0080;stop-opacity:1%22 /></linearGradient></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23g)%22 rx=%2220%22 /></svg>">
 
-    <link rel="icon" type="image/png" href="https://media.tenor.com/LNJ4OrmIqdIAAAAe/xdd.png">
     <style>
         body {
-
-            background-image: url('https://media.tenor.com/LNJ4OrmIqdIAAAAe/xdd.png');
-            background-repeat: repeat;
-            background-size: 120px;
-
-            min-height: 100vh;
+            background-color: #000000;
             margin: 0;
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            overflow: hidden;
+            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", sans-serif;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            position: relative;
+        }
+
+        .announcement-banner {
+            position: absolute;
+            top: 2.5rem;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to right, #ff8c00, #ff0080);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            z-index: 10;
+        }
+
+        .warning-icon {
+            width: 14px;
+            height: 14px;
+            fill: #ffffff;
+        }
+
+        .announcement-text {
+            color: #ffffff;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            text-align: center;
+        }
+
+        .container {
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding-left: 12%;
+            margin: 0;
+            transform: translateY(3rem);
+        }
+
+        .brand-name {
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            font-style: italic;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            margin: 0;
+            padding: 0;
+            opacity: 1;
+            line-height: 1.4;
+            transform: translateX(-0.02em);
+        }
+
+        .gradient-text {
+            font-size: 4rem;
+            font-weight: 800;
+            font-style: italic;
+            letter-spacing: -0.05em;
+            margin: 0;
+            padding-bottom: 0.05em;
+            transform: translateX(-0.04em); 
+            line-height: 1.1;
+            background: linear-gradient(135deg, #ff8c00 0%, #ff0080 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            color: transparent;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 3rem;
+            left: 12%;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .footer-tagline {
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 400;
+            font-style: italic;
+            opacity: 0.4;
+            letter-spacing: 0.02em;
+            margin: 0;
+        }
+
+        .developer-credit {
+            color: #ffffff;
+            font-size: 0.75rem;
+            opacity: 0.3;
+            margin: 0;
+            font-style: italic;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0.6;
+        }
+
+        .social-links a {
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 500;
+            transition: opacity 0.2s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+            text-decoration: underline;
+        }
+
+        #secret-trigger {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 150px;
+            height: 150px;
+            background: transparent;
+            cursor: pointer;
+            z-index: 5;
+            border: none;
+            outline: none;
+        }
+
+        @media (max-width: 640px) {
+            .announcement-banner {
+                top: 1.5rem;
+            }
+            .announcement-text {
+                font-size: 0.75rem;
+                padding: 0 1rem;
+            }
+            .container {
+                padding-left: 10%;
+                transform: translateY(2rem);
+            }
+            .brand-name {
+                font-size: 0.9rem;
+                letter-spacing: 0.2em;
+            }
+            .gradient-text {
+                font-size: 2.8rem;
+                transform: translateX(-0.02em);
+            }
+            .footer {
+                left: 10%;
+                bottom: 2rem;
+            }
+            .footer-tagline {
+                font-size: 0.75rem;
+            }
         }
     </style>
 </head>
 <body>
 
-<h1>coming soon</h1>
+    <button id="secret-trigger" aria-label="Secret"></button>
+    <!-- Use a standard audio element for the local file -->
+    <audio id="secret-audio" src="iwttbb.wav" preload="auto"></audio>
+
+    <div class="announcement-banner">
+        <svg class="warning-icon" viewBox="0 0 24 24">
+            <path d="M1 21h22L12 2 1 21zm12-3h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
+        </svg>
+        <span class="announcement-text">In current development, yes I'm actually starting to work on this now</span>
+    </div>
+
+    <div class="container">
+        <p class="brand-name">Seraphyx</p>
+        <h1 class="gradient-text">Coming soon.</h1>
+    </div>
+
+    <div class="footer">
+        <p class="footer-tagline">You've never seen an osu! private server like this before.</p>
+        <p class="developer-credit">Developed by Intergalaxity</p>
+        <div class="social-links">
+            <a href="https://osu.ppy.sh/users/34046545" target="_blank">osu!</a>
+            <a href="https://github.com/intergalaxity" target="_blank">GitHub</a>
+            <a href="mailto:luxifoo@gmail.com">Contact</a>
+        </div>
+    </div>
+
+    <script>
+        const trigger = document.getElementById('secret-trigger');
+        const audio = document.getElementById('secret-audio');
+        let activated = false;
+
+        trigger.addEventListener('click', () => {
+            if (!activated) {
+                // Play audio file
+                audio.play().catch(e => console.log("Playback failed. Ensure iwttbb.wav is in the root folder."));
+                activated = true;
+                
+                // Change all text content
+                const secretText = "I want things to be beautiful.";
+                
+                document.querySelector('.announcement-text').textContent = secretText;
+                document.querySelector('.brand-name').textContent = secretText;
+                document.querySelector('.gradient-text').textContent = secretText;
+                document.querySelector('.footer-tagline').textContent = secretText;
+                document.querySelector('.developer-credit').textContent = secretText;
+                
+                // Change links
+                const links = document.querySelectorAll('.social-links a');
+                links.forEach(link => {
+                    link.textContent = secretText;
+                });
+
+                trigger.style.display = 'none'; 
+            }
+        });
+    </script>
 </body>
 </html>
