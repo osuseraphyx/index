@@ -222,20 +222,17 @@
 
         trigger.addEventListener('click', () => {
             if (!activated) {
-                // Play audio file
                 audio.play().catch(e => console.log("Playback failed. Ensure iwttbb.wav is in the root folder."));
                 activated = true;
                 
                 const secretText = "I want things to be beautiful.";
                 
-                // Update text elements
                 document.querySelector('.announcement-text').textContent = secretText;
                 document.querySelector('.brand-name').textContent = secretText;
                 document.querySelector('.gradient-text').textContent = secretText;
                 document.querySelector('.footer-tagline').textContent = secretText;
                 document.querySelector('.developer-credit').textContent = secretText;
-                
-                // Update specific links with new URLs and text
+    
                 const osuLink = document.getElementById('link-osu');
                 osuLink.textContent = secretText;
                 osuLink.href = "https://blacksquares.bandcamp.com/album/i-want-things-to-be-beautiful";
@@ -248,7 +245,7 @@
                 contactLink.textContent = secretText;
                 contactLink.href = "https://open.spotify.com/track/6uZm4IvkJPbETKFOjRhr1c";
 
-                // Hide the trigger
+                // Hide trigger
                 trigger.style.display = 'none'; 
             }
         });
