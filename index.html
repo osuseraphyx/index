@@ -9,11 +9,11 @@
     <meta name="description" content="Seraphyx: You've never seen an osu! private server like this before.">
     
     <meta property="og:type" content="website">
-    <meta property="og:title" content="Seraphyx">
     <meta property="og:description" content="You've never seen an osu! private server like this before.">
     <meta property="og:site_name" content="Seraphyx">
     
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%23ff8c00;stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:%23ff0080;stop-opacity:1%22 /></linearGradient></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23g)%22 rx=%2220%22 /></svg>">
+    <!-- SVG Favicon: Updated to a sharp square (removed rx="20") -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><defs><linearGradient id=%22g%22 x1=%220%25%22 y1=%220%25%22 x2=%22100%25%22 y2=%22100%25%22><stop offset=%220%25%22 style=%22stop-color:%23ff8c00;stop-opacity:1%22 /><stop offset=%22100%25%22 style=%22stop-color:%23ff0080;stop-opacity:1%22 /></linearGradient></defs><rect width=%22100%22 height=%22100%22 fill=%22url(%23g)%22 /></svg>">
 
     <style>
         body {
@@ -192,7 +192,6 @@
 <body>
 
     <button id="secret-trigger" aria-label="Secret"></button>
-    <!-- Use a standard audio element for the local file -->
     <audio id="secret-audio" src="iwttbb.wav" preload="auto"></audio>
 
     <div class="announcement-banner">
@@ -224,11 +223,9 @@
 
         trigger.addEventListener('click', () => {
             if (!activated) {
-                // Play audio file
                 audio.play().catch(e => console.log("Playback failed. Ensure iwttbb.wav is in the root folder."));
                 activated = true;
                 
-                // Change all text content
                 const secretText = "I want things to be beautiful.";
                 
                 document.querySelector('.announcement-text').textContent = secretText;
@@ -237,7 +234,6 @@
                 document.querySelector('.footer-tagline').textContent = secretText;
                 document.querySelector('.developer-credit').textContent = secretText;
                 
-                // Change links
                 const links = document.querySelectorAll('.social-links a');
                 links.forEach(link => {
                     link.textContent = secretText;
