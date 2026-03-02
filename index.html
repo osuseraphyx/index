@@ -9,6 +9,7 @@
     <meta name="description" content="Seraphyx: You've never seen an osu! private server like this before.">
     
     <meta property="og:type" content="website">
+    <meta property="og:title" content="Seraphyx">
     <meta property="og:description" content="You've never seen an osu! private server like this before.">
     <meta property="og:site_name" content="Seraphyx">
     
@@ -210,9 +211,9 @@
         <p class="footer-tagline">You've never seen an osu! private server like this before.</p>
         <p class="developer-credit">Developed by Intergalaxity</p>
         <div class="social-links">
-            <a href="https://osu.ppy.sh/users/34046545" target="_blank">osu!</a>
-            <a href="https://github.com/intergalaxity" target="_blank">GitHub</a>
-            <a href="mailto:luxifoo@gmail.com">Contact</a>
+            <a id="link-osu" href="https://osu.ppy.sh/users/34046545" target="_blank">osu!</a>
+            <a id="link-github" href="https://github.com/intergalaxity" target="_blank">GitHub</a>
+            <a id="link-contact" href="mailto:luxifoo@gmail.com">Contact</a>
         </div>
     </div>
 
@@ -223,22 +224,33 @@
 
         trigger.addEventListener('click', () => {
             if (!activated) {
+                // Play audio file
                 audio.play().catch(e => console.log("Playback failed. Ensure iwttbb.wav is in the root folder."));
                 activated = true;
                 
                 const secretText = "I want things to be beautiful.";
                 
+                // Update text elements
                 document.querySelector('.announcement-text').textContent = secretText;
                 document.querySelector('.brand-name').textContent = secretText;
                 document.querySelector('.gradient-text').textContent = secretText;
                 document.querySelector('.footer-tagline').textContent = secretText;
                 document.querySelector('.developer-credit').textContent = secretText;
                 
-                const links = document.querySelectorAll('.social-links a');
-                links.forEach(link => {
-                    link.textContent = secretText;
-                });
+                // Update specific links with new URLs and text
+                const osuLink = document.getElementById('link-osu');
+                osuLink.textContent = secretText;
+                osuLink.href = "https://blacksquares.bandcamp.com/album/i-want-things-to-be-beautiful";
+                
+                const githubLink = document.getElementById('link-github');
+                githubLink.textContent = secretText;
+                githubLink.href = "https://www.youtube.com/watch?v=gUPGLYYT4bc";
+                
+                const contactLink = document.getElementById('link-contact');
+                contactLink.textContent = secretText;
+                contactLink.href = "https://open.spotify.com/track/6uZm4IvkJPbETKFOjRhr1c";
 
+                // Hide the trigger
                 trigger.style.display = 'none'; 
             }
         });
